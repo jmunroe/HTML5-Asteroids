@@ -939,7 +939,7 @@ Game = {
       Game.totalAsteroids = 0;
       Game.spawnAsteroids();
 
-      Game.nextBigAlienTime = Date.now() + 0 + (3 * Math.random());
+      Game.nextBigAlienTime = Date.now() + 300000 + (30000 * Math.random());
 
       this.state = 'spawn_ship';
     },
