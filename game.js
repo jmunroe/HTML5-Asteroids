@@ -429,10 +429,10 @@ Ship = function () {
     }
 
     // limit the ship's speed
-    if (Math.sqrt(this.vel.x * this.vel.x + this.vel.y * this.vel.y) > 8) {
-      this.vel.x *= 0.95;
-      this.vel.y *= 0.95;
-    }
+    //if (Math.sqrt(this.vel.x * this.vel.x + this.vel.y * this.vel.y) > 8) {
+    //  this.vel.x *= 0.95;
+    //  this.vel.y *= 0.95;
+    //}
   };
 
   this.collision = function (other) {
@@ -870,7 +870,7 @@ SFX.muted = true;
 
 Game = {
   score: 0,
-  totalAsteroids: 5,
+  totalAsteroids: 0,
   lives: 0,
 
   canvasWidth: 800,
@@ -913,7 +913,7 @@ Game = {
 
   FSM: {
     boot: function () {
-      Game.spawnAsteroids(5);
+      Game.spawnAsteroids(0);
       this.state = 'waiting';
     },
     waiting: function () {
@@ -936,10 +936,10 @@ Game = {
 
       Game.score = 0;
       Game.lives = 2;
-      Game.totalAsteroids = 2;
+      Game.totalAsteroids = 0;
       Game.spawnAsteroids();
 
-      Game.nextBigAlienTime = Date.now() + 30000 + (30000 * Math.random());
+      Game.nextBigAlienTime = Date.now() + 0 + (3 * Math.random());
 
       this.state = 'spawn_ship';
     },
@@ -976,7 +976,7 @@ Game = {
       // wait a second before spawning more asteroids
       if (Date.now() - this.timer > 1000) {
         this.timer = null;
-        Game.totalAsteroids++;
+        //Game.totalAsteroids++;
         if (Game.totalAsteroids > 12) Game.totalAsteroids = 12;
         Game.spawnAsteroids();
         this.state = 'run';
